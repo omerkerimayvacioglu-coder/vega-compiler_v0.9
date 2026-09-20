@@ -1,0 +1,23 @@
+// Test Lambda Expressions
+
+fn main() {
+    // Simple lambda
+    let square = { x -> x * x }
+    
+    // Lambda with multiple parameters (parsing test)
+    let add = { a, b ->
+        a + b
+    }
+    
+    // Lambda with expression body
+    let isPositive = { n ->
+        n > 0
+    }
+    
+    // Lambda in variable
+    let double = { x ->
+        x * 2
+    }
+    
+    print("Lambda expressions parsing test completed")
+}

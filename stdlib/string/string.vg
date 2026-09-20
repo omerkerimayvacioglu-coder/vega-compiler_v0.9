@@ -1,0 +1,274 @@
+// Vega Standard Library - String Module
+// Provides string manipulation utilities wrapping Java String APIs
+
+package stdlib.string
+
+// ===== Basic String Operations =====
+
+// Get length of string
+public fn len(s: String) -> Int {
+    // Java: s.length()
+}
+
+// Check if string is empty
+public fn isEmpty(s: String) -> Bool {
+    // Java: s.isEmpty()
+}
+
+// Convert string to uppercase
+public fn toUpper(s: String) -> String {
+    // Java: s.toUpperCase()
+}
+
+// Convert string to lowercase
+public fn toLower(s: String) -> String {
+    // Java: s.toLowerCase()
+}
+
+// Trim whitespace from both ends
+public fn trim(s: String) -> String {
+    // Java: s.trim()
+}
+
+// Trim whitespace from start
+public fn trimStart(s: String) -> String {
+    // Java: s.replaceAll("^\\s+", "")
+}
+
+// Trim whitespace from end
+public fn trimEnd(s: String) -> String {
+    // Java: s.replaceAll("\\s+$", "")
+}
+
+// ===== Substring Operations =====
+
+// Get substring from start index to end index [start:end)
+public fn substring(s: String, start: Int, end: Int) -> String {
+    // Java: s.substring(start, end)
+}
+
+// Get substring from start index to end of string
+public fn substring(s: String, start: Int) -> String {
+    // Java: s.substring(start)
+}
+
+// Get character at index
+public fn charAt(s: String, index: Int) -> Char {
+    // Java: s.charAt(index)
+}
+
+// Get first character
+public fn first(s: String) -> Char? {
+    // Java: s.length() > 0 ? s.charAt(0) : null
+}
+
+// Get last character
+public fn last(s: String) -> Char? {
+    // Java: s.length() > 0 ? s.charAt(s.length() - 1) : null
+}
+
+// ===== Search Operations =====
+
+// Check if string starts with prefix
+public fn startsWith(s: String, prefix: String) -> Bool {
+    // Java: s.startsWith(prefix)
+}
+
+// Check if string ends with suffix
+public fn endsWith(s: String, suffix: String) -> Bool {
+    // Java: s.endsWith(suffix)
+}
+
+// Check if string contains substring
+public fn contains(s: String, substring: String) -> Bool {
+    // Java: s.contains(substring)
+}
+
+// Find index of substring (-1 if not found)
+public fn indexOf(s: String, substring: String) -> Int {
+    // Java: s.indexOf(substring)
+}
+
+// Find index of substring starting from given position
+public fn indexOf(s: String, substring: String, fromIndex: Int) -> Int {
+    // Java: s.indexOf(substring, fromIndex)
+}
+
+// Find last index of substring (-1 if not found)
+public fn lastIndexOf(s: String, substring: String) -> Int {
+    // Java: s.lastIndexOf(substring)
+}
+
+// Count occurrences of substring
+public fn count(s: String, substring: String) -> Int {
+    // Java: s.split(Pattern.quote(substring), -1).length - 1
+}
+
+// ===== Replace Operations =====
+
+// Replace first occurrence of target with replacement
+public fn replace(s: String, target: String, replacement: String) -> String {
+    // Java: s.replaceFirst(Pattern.quote(target), Matcher.quoteReplacement(replacement))
+}
+
+// Replace all occurrences of target with replacement
+public fn replaceAll(s: String, target: String, replacement: String) -> String {
+    // Java: s.replace(target, replacement)
+}
+
+// Replace using regex pattern
+public fn replaceRegex(s: String, pattern: String, replacement: String) -> String {
+    // Java: s.replaceAll(pattern, replacement)
+}
+
+// ===== Split and Join =====
+
+// Split string by delimiter
+public fn split(s: String, delimiter: String) -> Array<String> {
+    // Java: s.split(Pattern.quote(delimiter), -1)
+}
+
+// Split string by regex pattern
+public fn splitRegex(s: String, pattern: String) -> Array<String> {
+    // Java: s.split(pattern, -1)
+}
+
+// Split string into lines
+public fn lines(s: String) -> Array<String> {
+    // Java: s.split("\\r?\\n", -1)
+}
+
+// Join array of strings with separator
+public fn join(parts: Array<String>, separator: String) -> String {
+    // Java: String.join(separator, parts)
+}
+
+// ===== Case Conversion =====
+
+// Convert to camelCase
+public fn toCamelCase(s: String) -> String {
+    // Java: custom implementation
+}
+
+// Convert to snake_case
+public fn toSnakeCase(s: String) -> String {
+    // Java: s.replaceAll("([a-z])([A-Z]+)", "$1_$2").toLowerCase()
+}
+
+// Convert to kebab-case
+public fn toKebabCase(s: String) -> String {
+    // Java: s.replaceAll("([a-z])([A-Z]+)", "$1-$2").toLowerCase()
+}
+
+// Capitalize first letter
+public fn capitalize(s: String) -> String {
+    // Java: s.isEmpty() ? "" : s.substring(0, 1).toUpperCase() + s.substring(1)
+}
+
+// Capitalize first letter of each word
+public fn capitalizeWords(s: String) -> String {
+    // Java: custom implementation using split and capitalize
+}
+
+// ===== Padding and Alignment =====
+
+// Pad string to length with character on right
+public fn padEnd(s: String, length: Int, padChar: Char) -> String {
+    // Java: custom implementation
+}
+
+// Pad string to length with character on left
+public fn padStart(s: String, length: Int, padChar: Char) -> String {
+    // Java: custom implementation
+}
+
+// Repeat string n times
+public fn repeat(s: String, count: Int) -> String {
+    // Java: s.repeat(count)  // Java 11+
+}
+
+// ===== Conversion =====
+
+// Convert string to integer
+public fn toInt(s: String) -> Int? {
+    // Java: try { return Integer.parseInt(s); } catch (e) { return null; }
+}
+
+// Convert string to float
+public fn toFloat(s: String) -> Float? {
+    // Java: try { return Float.parseFloat(s); } catch (e) { return null; }
+}
+
+// Convert string to double
+public fn toDouble(s: String) -> Double? {
+    // Java: try { return Double.parseDouble(s); } catch (e) { return null; }
+}
+
+// Convert string to boolean
+public fn toBool(s: String) -> Bool {
+    // Java: s.equalsIgnoreCase("true")
+}
+
+// Convert value to string
+public fn toString<T>(value: T) -> String {
+    // Java: value.toString()
+}
+
+// ===== Comparison =====
+
+// Compare strings lexicographically
+public fn compare(s1: String, s2: String) -> Int {
+    // Java: s1.compareTo(s2)
+}
+
+// Case-insensitive comparison
+public fn compareIgnoreCase(s1: String, s2: String) -> Int {
+    // Java: s1.compareToIgnoreCase(s2)
+}
+
+// Check if strings are equal
+public fn equals(s1: String, s2: String) -> Bool {
+    // Java: s1.equals(s2)
+}
+
+// Check if strings are equal ignoring case
+public fn equalsIgnoreCase(s1: String, s2: String) -> Bool {
+    // Java: s1.equalsIgnoreCase(s2)
+}
+
+// ===== Char Operations =====
+
+// Check if character is digit
+public fn isDigit(c: Char) -> Bool {
+    // Java: Character.isDigit(c)
+}
+
+// Check if character is letter
+public fn isLetter(c: Char) -> Bool {
+    // Java: Character.isLetter(c)
+}
+
+// Check if character is whitespace
+public fn isWhitespace(c: Char) -> Bool {
+    // Java: Character.isWhitespace(c)
+}
+
+// Check if character is uppercase
+public fn isUpper(c: Char) -> Bool {
+    // Java: Character.isUpperCase(c)
+}
+
+// Check if character is lowercase
+public fn isLower(c: Char) -> Bool {
+    // Java: Character.isLowerCase(c)
+}
+
+// Convert character to uppercase
+public fn toUpperChar(c: Char) -> Char {
+    // Java: Character.toUpperCase(c)
+}
+
+// Convert character to lowercase
+public fn toLowerChar(c: Char) -> Char {
+    // Java: Character.toLowerCase(c)
+}

@@ -1,0 +1,45 @@
+// Test Class Inheritance
+
+class Animal {
+    let name: String
+    
+    fn speak() {
+        print("...")
+    }
+    
+    fn getName() -> String {
+        name
+    }
+}
+
+class Dog extends Animal {
+    let breed: String
+    
+    override fn speak() {
+        print("Woof! ")
+        print(name)
+    }
+    
+    fn getBreed() -> String {
+        breed
+    }
+}
+
+class Cat extends Animal {
+    override fn speak() {
+        print("Meow! ")
+        print(name)
+    }
+}
+
+fn main() {
+    let dog = Dog(name: "Buddy", breed: "Golden Retriever")
+    print("Dog: ")
+    dog.speak()
+    print("Breed: ")
+    print(dog.getBreed())
+    
+    let cat = Cat(name: "Whiskers")
+    print("Cat: ")
+    cat.speak()
+}

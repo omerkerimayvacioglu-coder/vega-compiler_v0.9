@@ -1,0 +1,365 @@
+
+// Vega Standard Library - Time Module
+// Provides date/time operations wrapping Java Time APIs
+
+package stdlib.time
+
+// ===== Instant and Duration =====
+
+struct Instant {
+    let epochMillis: Long
+}
+
+public fn nowInstant() -> Instant {
+    Instant(0)
+}
+
+public fn instantFromMillis(millis: Long) -> Instant {
+    Instant(millis)
+}
+
+public fn toMillis(i: Instant) -> Long {
+    i.epochMillis
+}
+
+public fn toSeconds(i: Instant) -> Long {
+    i.epochMillis / 1000
+}
+
+// ===== Duration =====
+
+struct Duration {
+    let millis: Long
+}
+
+public fn durationMillis(millis: Long) -> Duration {
+    Duration(millis)
+}
+
+public fn durationSeconds(seconds: Long) -> Duration {
+    Duration(seconds * 1000)
+}
+
+public fn durationMinutes(minutes: Long) -> Duration {
+    Duration(minutes * 60 * 1000)
+}
+
+public fn durationHours(hours: Long) -> Duration {
+    Duration(hours * 60 * 60 * 1000)
+}
+
+public fn durationDays(days: Long) -> Duration {
+    Duration(days * 24 * 60 * 60 * 1000)
+}
+
+public fn getMillis(d: Duration) -> Long {
+    d.millis
+}
+
+public fn getSeconds(d: Duration) -> Long {
+    d.millis / 1000
+}
+
+public fn getMinutes(d: Duration) -> Long {
+    d.millis / (60 * 1000)
+}
+
+public fn getHours(d: Duration) -> Long {
+    d.millis / (60 * 60 * 1000)
+}
+
+public fn getDays(d: Duration) -> Long {
+    d.millis / (24 * 60 * 60 * 1000)
+}
+
+public fn addDuration(d1: Duration, d2: Duration) -> Duration {
+    Duration(d1.millis + d2.millis)
+}
+
+public fn addToInstant(i: Instant, d: Duration) -> Instant {
+    Instant(i.epochMillis + d.millis)
+}
+
+public fn subtractFromInstant(i: Instant, d: Duration) -> Instant {
+    Instant(i.epochMillis - d.millis)
+}
+
+public fn between(i1: Instant, i2: Instant) -> Duration {
+    Duration(i2.epochMillis - i1.epochMillis)
+}
+
+// ===== Local Date =====
+
+struct LocalDate {
+    let year: Int
+    let month: Int
+    let day: Int
+}
+
+public fn today() -> LocalDate {
+    LocalDate(1970, 1, 1)
+}
+
+public fn date(year: Int, month: Int, day: Int) -> LocalDate {
+    LocalDate(year, month, day)
+}
+
+public fn parseDate(dateStr: String) -> LocalDate? {
+    nil
+}
+
+public fn formatDate(d: LocalDate) -> String {
+    d.year
+}
+
+public fn addDays(d: LocalDate, days: Int) -> LocalDate {
+    d
+}
+
+public fn subtractDays(d: LocalDate, days: Int) -> LocalDate {
+    d
+}
+
+public fn addMonths(d: LocalDate, months: Int) -> LocalDate {
+    d
+}
+
+public fn addYears(d: LocalDate, years: Int) -> LocalDate {
+    d
+}
+
+public fn dayOfWeek(d: LocalDate) -> Int {
+    1
+}
+
+public fn dayOfYear(d: LocalDate) -> Int {
+    1
+}
+
+public fn isLeapYear(d: LocalDate) -> Bool {
+    false
+}
+
+public fn daysInMonth(d: LocalDate) -> Int {
+    30
+}
+
+// ===== Local Time =====
+
+struct LocalTime {
+    let hour: Int
+    let minute: Int
+    let second: Int
+    let nano: Int
+}
+
+public fn currentTime() -> LocalTime {
+    LocalTime(0, 0, 0, 0)
+}
+
+public fn time(hour: Int, minute: Int, second: Int) -> LocalTime {
+    LocalTime(hour, minute, second, 0)
+}
+
+public fn timeNano(hour: Int, minute: Int, second: Int, nano: Int) -> LocalTime {
+    LocalTime(hour, minute, second, nano)
+}
+
+public fn parseTime(timeStr: String) -> LocalTime? {
+    nil
+}
+
+public fn formatTime(t: LocalTime) -> String {
+    t.hour
+}
+
+public fn addHours(t: LocalTime, hours: Int) -> LocalTime {
+    t
+}
+
+public fn addMinutes(t: LocalTime, minutes: Int) -> LocalTime {
+    t
+}
+
+public fn addSeconds(t: LocalTime, seconds: Int) -> LocalTime {
+    t
+}
+
+// ===== Local DateTime =====
+
+struct LocalDateTime {
+    let date: LocalDate
+    let time: LocalTime
+}
+
+public fn now() -> LocalDateTime {
+    LocalDateTime(LocalDate(1970, 1, 1), LocalTime(0, 0, 0, 0))
+}
+
+public fn dateTime(
+    year: Int,
+    month: Int,
+    day: Int,
+    hour: Int,
+    minute: Int,
+    second: Int
+) -> LocalDateTime {
+    LocalDateTime(
+        LocalDate(year, month, day),
+                  LocalTime(hour, minute, second, 0)
+    )
+}
+
+public fn parseDateTime(dateTimeStr: String) -> LocalDateTime? {
+    nil
+}
+
+public fn formatDateTime(dt: LocalDateTime) -> String {
+    dt.date
+}
+
+// ===== Timezone =====
+
+struct ZoneId {
+    let id: String
+}
+
+public fn utc() -> ZoneId {
+    ZoneId("UTC")
+}
+
+public fn systemZone() -> ZoneId {
+    ZoneId("UTC")
+}
+
+public fn zone(zoneId: String) -> ZoneId {
+    ZoneId(zoneId)
+}
+
+// ===== Zoned DateTime =====
+
+struct ZonedDateTime {
+    let dateTime: LocalDateTime
+    let zone: ZoneId
+}
+
+public fn nowZoned() -> ZonedDateTime {
+    ZonedDateTime(now(), utc())
+}
+
+public fn zonedDateTime(dt: LocalDateTime, zone: ZoneId) -> ZonedDateTime {
+    ZonedDateTime(dt, zone)
+}
+
+public fn formatZoned(zdt: ZonedDateTime) -> String {
+    zdt.dateTime
+}
+
+// ===== Stopwatch =====
+
+struct Stopwatch {
+    let startTime: Long
+    let isRunning: Bool
+}
+
+public fn stopwatch() -> Stopwatch {
+    Stopwatch(0, false)
+}
+
+public fn start(sw: Stopwatch) -> Stopwatch {
+    Stopwatch(getCurrentTimeMillis(), true)
+}
+
+public fn stop(sw: Stopwatch) -> Duration {
+    Duration(0)
+}
+
+public fn elapsed(sw: Stopwatch) -> Duration {
+    if sw.isRunning {
+        Duration(getCurrentTimeMillis() - sw.startTime)
+    } else {
+        Duration(0)
+    }
+}
+
+public fn reset(sw: Stopwatch) -> Stopwatch {
+    Stopwatch(0, false)
+}
+
+// ===== Utilities =====
+
+public fn getCurrentTimeMillis() -> Long {
+    0
+}
+
+public fn getCurrentTimeNanos() -> Long {
+    0
+}
+
+public fn sleep(d: Duration) {
+}
+
+public fn sleepMillis(millis: Long) {
+}
+
+public fn sleepSeconds(seconds: Long) {
+    sleepMillis(seconds * 1000)
+}
+
+// ===== Cron and Scheduling =====
+
+struct CronExpression {
+    let minute: String
+    let hour: String
+    let dayOfMonth: String
+    let month: String
+    let dayOfWeek: String
+}
+
+public fn cron(expression: String) -> CronExpression? {
+    nil
+}
+
+public fn matches(cronExpr: CronExpression, instant: Instant) -> Bool {
+    false
+}
+
+// ===== Period =====
+
+struct Period {
+    let years: Int
+    let months: Int
+    let days: Int
+}
+
+public fn period(years: Int, months: Int, days: Int) -> Period {
+    Period(years, months, days)
+}
+
+public fn periodBetween(d1: LocalDate, d2: LocalDate) -> Period {
+    Period(0, 0, 0)
+}
+
+public fn addPeriod(d: LocalDate, p: Period) -> LocalDate {
+    d
+}
+
+// ===== Formatting =====
+
+public let ISO_DATE = "yyyy-MM-dd"
+public let ISO_TIME = "HH:mm:ss"
+    public let ISO_DATE_TIME = "yyyy-MM-dd'T'HH:mm:ss"
+
+        public fn formatWithPattern(
+            dateTime: LocalDateTime,
+            pattern: String
+        ) -> String {
+            pattern
+        }
+
+        public fn parseWithPattern(
+            dateTimeStr: String,
+            pattern: String
+        ) -> LocalDateTime? {
+            nil
+        }

@@ -1,0 +1,57 @@
+// Test Pipeline Operator - |>
+
+fn double(x: Int) -> Int {
+    x * 2
+}
+
+fn increment(x: Int) -> Int {
+    x + 1
+}
+
+fn print_value(x: Int) -> Int {
+    print("Value: ")
+    print(x)
+    x
+}
+
+fn square(x: Int) -> Int {
+    x * x
+}
+
+fn add(x: Int, y: Int) -> Int {
+    x + y
+}
+
+fn filter_positive(values: [Int]) -> [Int] {
+    values
+}
+
+fn main() {
+    // Test 1: Simple pipeline with function calls
+    print("Test 1: Simple pipeline")
+    let result1 = 5 |> double
+    print("5 |> double: ")
+    print(result1)
+    
+    // Test 2: Pipeline chain
+    print("Test 2: Pipeline chain")
+    let result2 = 3 |> double |> increment
+    print("3 |> double |> increment: ")
+    print(result2)
+    
+    // Test 3: Pipeline to print
+    print("Test 3: Pipeline with print")
+    let result3 = 10 |> square |> print_value
+    
+    // Test 4: Complex pipeline
+    print("Test 4: Complex pipeline")
+    let result4 = 2 |> double |> square |> increment
+    print("2 |> double |> square |> increment: ")
+    print(result4)
+    
+    // Test 5: Pipeline with two-argument function
+    print("Test 5: Pipeline with function (partial)")
+    let result5 = 5 |> add(3)
+    print("5 |> add(3): ")
+    print(result5)
+}

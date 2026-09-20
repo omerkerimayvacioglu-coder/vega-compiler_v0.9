@@ -1,0 +1,28 @@
+// Test Generics - Basic support
+
+struct Box<T> {
+    let value: T
+}
+
+fn first<T>(items: [T]) -> T? {
+    if items.isEmpty {
+        return null
+    }
+    items[0]
+}
+
+fn main() {
+    // Generic struct
+    let intBox = Box(value: 42)
+    print("Box contains: ")
+    print(intBox.value)
+    
+    let stringBox = Box(value: "Hello")
+    print("String box: ")
+    print(stringBox.value)
+    
+    // Generic function
+    let numbers = [10, 20, 30]
+    // Note: Generic function calls need type inference
+    // For now, this tests if parsing works
+}

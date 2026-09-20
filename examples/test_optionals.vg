@@ -1,0 +1,38 @@
+// Test Optional Types and Optional Binding
+
+fn findUser(id: Int) -> String? {
+    if id == 1 {
+        "Alice"
+    } else if id == 2 {
+        "Bob"
+    } else {
+        null
+    }
+}
+
+fn main() {
+    // Test optional binding - if let
+    if let user = findUser(1) {
+        print("Found user: ")
+        print(user)
+    } else {
+        print("User not found")
+    }
+    
+    // Test with non-existent user
+    if let user = findUser(99) {
+        print("Found user: ")
+        print(user)
+    } else {
+        print("User 99 not found")
+    }
+    
+    // Test null coalescing
+    let user1 = findUser(2) ?? "Unknown"
+    print("User 1: ")
+    print(user1)
+    
+    let user2 = findUser(99) ?? "Guest"
+    print("User 2: ")
+    print(user2)
+}

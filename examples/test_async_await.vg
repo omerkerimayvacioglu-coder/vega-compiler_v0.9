@@ -1,0 +1,48 @@
+// Test Async/Await - Simple synchronous implementation
+
+async fn fetchData(id: Int) -> String {
+    print("Fetching data for id: ")
+    print(id)
+    "data_" + id.toString()
+}
+
+async fn processUser(userId: Int) -> String {
+    let data = await fetchData(userId)
+    print("Processing: ")
+    print(data)
+    "processed_" + data
+}
+
+async fn multipleOperations() -> String {
+    print("Starting async operations")
+    
+    let result1 = await fetchData(1)
+    print("Result 1: ")
+    print(result1)
+    
+    let result2 = await fetchData(2)
+    print("Result 2: ")
+    print(result2)
+    
+    "multiple_" + result1 + "_" + result2
+}
+
+fn main() {
+    // Test 1: Simple async function
+    print("Test 1: Simple async")
+    let user1 = fetchData(100)
+    print("User 1: ")
+    print(user1)
+    
+    // Test 2: Async with await
+    print("Test 2: Async with await")
+    let result = processUser(200)
+    print("Result: ")
+    print(result)
+    
+    // Test 3: Multiple operations
+    print("Test 3: Multiple operations")
+    let multi = multipleOperations()
+    print("Multi: ")
+    print(multi)
+}

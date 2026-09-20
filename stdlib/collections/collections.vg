@@ -1,0 +1,200 @@
+// Vega Standard Library - Collections Module
+// Provides wrappers for Java collection types: List, Map, Set
+
+package stdlib.collections
+
+// ===== Array/List Operations =====
+
+// Get length of array
+public fn len<T>(arr: Array<T>) -> Int {
+    // Java: arr.length
+}
+
+// Check if array is empty
+public fn isEmpty<T>(arr: Array<T>) -> Bool {
+    // Java: arr.length == 0
+}
+
+// Add element to end of list (requires mutable list)
+public fn push<T>(list: Array<T>, element: T) {
+    // Java: java.util.List list_mut = new java.util.ArrayList(Arrays.asList(arr));
+    //       list_mut.add(element);
+}
+
+// Remove and return last element
+public fn pop<T>(list: Array<T>) -> T {
+    // Java: list_mut.remove(list_mut.size() - 1)
+}
+
+// Insert element at index
+public fn insert<T>(list: Array<T>, index: Int, element: T) {
+    // Java: list_mut.add(index, element)
+}
+
+// Remove element at index
+public fn remove<T>(list: Array<T>, index: Int) -> T {
+    // Java: list_mut.remove(index)
+}
+
+// Get element at index (with bounds check)
+public fn get<T>(list: Array<T>, index: Int) -> T? {
+    // Java: if (index >= 0 && index < list.size()) return list.get(index); else return null;
+}
+
+// Find first index of element
+public fn indexOf<T>(list: Array<T>, element: T) -> Int? {
+    // Java: int idx = list.indexOf(element); return idx >= 0 ? idx : null;
+}
+
+// Check if array contains element
+public fn contains<T>(list: Array<T>, element: T) -> Bool {
+    // Java: list.contains(element)
+}
+
+// Create array from elements
+
+// Repeat element n times
+public fn repeat<T>(element: T, count: Int) -> Array<T> {
+    // Java: java.util.List result = new java.util.ArrayList();
+    //       for (int i = 0; i < count; i++) result.add(element);
+    //       return result.toArray();
+}
+
+// ===== Map Operations =====
+
+struct Map<K, V> {
+    // Internal wrapper for java.util.HashMap
+    let data: Any // Java: java.util.HashMap<K, V>
+}
+
+// Create empty map
+public fn map<K, V>() -> Map<K, V> {
+    // Java: new java.util.HashMap<K, V>()
+}
+
+// Put key-value pair
+public fn put<K, V>(m: Map<K, V>, key: K, value: V) {
+    // Java: m.put(key, value)
+}
+
+// Get value by key
+public fn get<K, V>(m: Map<K, V>, key: K) -> V? {
+    // Java: return m.get(key) // returns null if not found
+}
+
+// Check if map contains key
+public fn containsKey<K, V>(m: Map<K, V>, key: K) -> Bool {
+    // Java: m.containsKey(key)
+}
+
+// Check if map contains value
+public fn containsValue<K, V>(m: Map<K, V>, value: V) -> Bool {
+    // Java: m.containsValue(value)
+}
+
+// Remove key from map
+public fn remove<K, V>(m: Map<K, V>, key: K) -> V? {
+    // Java: m.remove(key)
+}
+
+// Get all keys
+public fn keys<K, V>(m: Map<K, V>) -> Array<K> {
+    // Java: m.keySet().toArray()
+}
+
+// Get all values
+public fn values<K, V>(m: Map<K, V>) -> Array<V> {
+    // Java: m.values().toArray()
+}
+
+// Get number of entries
+public fn size<K, V>(m: Map<K, V>) -> Int {
+    // Java: m.size()
+}
+
+// Clear all entries
+public fn clear<K, V>(m: Map<K, V>) {
+    // Java: m.clear()
+}
+
+// ===== Set Operations =====
+
+struct Set<T> {
+    // Internal wrapper for java.util.HashSet
+    let data: Any // Java: java.util.HashSet<T>
+}
+
+// Create empty set
+public fn set<T>() -> Set<T> {
+    // Java: new java.util.HashSet<T>()
+}
+
+// Add element to set
+public fn add<T>(s: Set<T>, element: T) -> Bool {
+    // Java: return s.add(element) // true if added, false if already present
+}
+
+// Check if set contains element
+public fn contains<T>(s: Set<T>, element: T) -> Bool {
+    // Java: s.contains(element)
+}
+
+// Remove element from set
+public fn remove<T>(s: Set<T>, element: T) -> Bool {
+    // Java: s.remove(element)
+}
+
+// Get size of set
+public fn size<T>(s: Set<T>) -> Int {
+    // Java: s.size()
+}
+
+// Convert set to array
+public fn toArray<T>(s: Set<T>) -> Array<T> {
+    // Java: s.toArray()
+}
+
+// Union of two sets
+public fn union<T>(s1: Set<T>, s2: Set<T>) -> Set<T> {
+    // Java: java.util.HashSet result = new java.util.HashSet(s1);
+    //       result.addAll(s2);
+    //       return result;
+}
+
+// Intersection of two sets
+public fn intersection<T>(s1: Set<T>, s2: Set<T>) -> Set<T> {
+    // Java: java.util.HashSet result = new java.util.HashSet(s1);
+    //       result.retainAll(s2);
+    //       return result;
+}
+
+// Difference of two sets (s1 - s2)
+public fn difference<T>(s1: Set<T>, s2: Set<T>) -> Set<T> {
+    // Java: java.util.HashSet result = new java.util.HashSet(s1);
+    //       result.removeAll(s2);
+    //       return result;
+}
+
+// ===== List Utilities =====
+
+// Reverse array
+public fn reverse<T>(list: Array<T>) -> Array<T> {
+    // Java: java.util.Collections.reverse(list);
+    //       return list;
+}
+
+// Sort array (requires comparable elements)
+public fn sort<T>(list: Array<T>) {
+    // Java: java.util.Collections.sort(list);
+}
+
+// Create slice of array [start:end)
+public fn slice<T>(list: Array<T>, start: Int, end: Int) -> Array<T> {
+    // Java: return java.util.Arrays.copyOfRange(list, start, end);
+}
+
+// Join array elements with separator
+public fn join(list: Array<String>, separator: String) -> String {
+    // Java: return String.join(separator, list);
+}
+

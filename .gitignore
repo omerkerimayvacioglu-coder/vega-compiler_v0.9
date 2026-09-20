@@ -1,0 +1,12 @@
+node_modules/
+.env
+
+.gradle/
+build/
+out/
+*.class
+
+.idea/
+*.iml
+
+*.bak

@@ -1,0 +1,21 @@
+fn add(a: Int, b: Int) -> Int {
+    a + b
+}
+
+fn divide(a: Int, b: Int) -> Int {
+    if b == 0 {
+        return 0
+    }
+    a / b
+}
+
+fn main() {
+    let result = add(10, 20)
+    print("10 + 20 = {result}")
+
+    let safe = divide(100, 5)
+    print("100 / 5 = {safe}")
+
+    let zero = divide(10, 0)
+    print("10 / 0 = {zero}")
+}

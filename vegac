@@ -1,0 +1,156 @@
+#!/bin/bash
+
+# Vega Compiler CLI - vegac
+# Usage: vegac build <file.vg> [--out <dir>]
+#        vegac run <file.vg>
+#        vegac compile <file.vg>
+#        vegac --version
+#        vegac --help
+
+set -e
+
+# Get script directory
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+# Check Java
+if ! command -v java &> /dev/null; then
+    echo "Error: Java not found. Please install Java 17 or higher."
+    echo "Visit: https://www.oracle.com/java/technologies/downloads/"
+    exit 1
+fi
+
+# Get Java version
+JAVA_VERSION=$(java -version 2>&1 | grep -oP 'version "\K[0-9]+' | head -1)
+if [ "$JAVA_VERSION" -lt 17 ]; then
+    echo "Error: Java 17+ required. Current version: $JAVA_VERSION"
+    exit 1
+fi
+
+# Classpath
+BIN_DIR="$SCRIPT_DIR/bin"
+LIBS_DIR="$SCRIPT_DIR/libs"
+
+if [ ! -d "$BIN_DIR" ]; then
+    echo "Error: Vega compiler not compiled. Run: cd $SCRIPT_DIR && bash build.sh"
+    exit 1
+fi
+
+# Build classpath
+CLASSPATH="$SCRIPT_DIR/build/classes"
+if [ -d "$LIBS_DIR" ]; then
+    CLASSPATH="$CLASSPATH:$LIBS_DIR/*"
+fi
+
+# Handle commands
+case "${1:-}" in
+    build|compile)
+        if [ -z "$2" ]; then
+            echo "Usage: vegac build <file.vg> [--out <dir>]"
+            exit 1
+        fi
+        java -cp "$CLASSPATH" com.vega.compiler.cli.VegaCLI  "$@"
+        ;;
+    
+    run)
+        if [ -z "$2" ]; then
+            echo "Usage: vegac run <file.vg>"
+            exit 1
+        fi
+        java -cp "$CLASSPATH" com.vega.compiler.cli.VegaCLI run "$2"
+        ;;
+    
+    lsp)
+        # Start Language Server
+        echo "Starting Vega Language Server..."
+        java -cp "$CLASSPATH:$LIBS_DIR/gson-2.10.1.jar" com.vega.compiler.lsp.server.LspServerMain
+        ;;
+    
+    stdlib)
+        java -cp "$CLASSPATH" com.vega.compiler.cli.VegaCLI stdlib
+        ;;
+    
+    test)
+        java -cp "$CLASSPATH:$LIBS_DIR/gson-2.10.1.jar" com.vega.compiler.lsp.test.LspIntegrationTest
+        ;;
+    
+    tokens|ast)
+        if [ -z "$2" ]; then
+            echo "Usage: vegac $1 <file.vg>"
+            exit 1
+        fi
+        java -cp "$CLASSPATH" com.vega.compiler.cli.VegaCLI "$@"
+        ;;
+    
+    --version|-v)
+        echo "Vega Compiler v0.1.0"
+        ;;
+    
+    --help|-h|help)
+        cat << 'EOF'
+Vega Compiler v0.1.0
+
+USAGE:
+    vegac <COMMAND> [OPTIONS] [ARGS]
+
+COMMANDS:
+    build <file.vg>              Compile Vega source to JVM bytecode
+    compile <file.vg>            Alias for build
+    run <file.vg>                Compile and run a Vega program
+    
+    lsp                           Start Language Server Protocol server
+    stdlib                        Show standard library information
+    test                          Run integration tests
+    
+    tokens <file.vg>             Print tokens (debug)
+    ast <file.vg>                Print AST (debug)
+    
+    --version, -v                Show version
+    --help, -h, help             Show this help message
+
+OPTIONS:
+    --out <dir>                  Output directory for compilation (default: ./out)
+
+EXAMPLES:
+    # Build a Vega program
+    vegac build main.vg
+    vegac build main.vg --out ./output
+    
+    # Run a program
+    vegac run main.vg
+    
+    # Show stdlib modules
+    vegac stdlib
+    
+    # Start language server (for IDE)
+    vegac lsp
+    
+    # Debug: show tokens
+    vegac tokens main.vg
+    
+    # Debug: show AST
+    vegac ast main.vg
+
+ENVIRONMENT:
+    JAVA_HOME              Java installation directory
+    VEGA_HOME              Vega compiler installation directory (optional)
+
+DOCUMENTATION:
+    https://vegaproject.dev
+    https://github.com/vegaproject/vega
+
+For more information, visit the Vega documentation.
+EOF
+        ;;
+    
+    "")
+        echo "Usage: vegac <COMMAND> [OPTIONS]"
+        echo "Run 'vegac --help' for more information"
+        exit 1
+        ;;
+    
+    *)
+        echo "Error: Unknown command '$1'"
+        echo "Run 'vegac --help' for usage information"
+        exit 1
+        ;;
+esac

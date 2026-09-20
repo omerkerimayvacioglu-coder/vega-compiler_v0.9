@@ -1,0 +1,82 @@
+// Test Error Handling - Try/Catch/Throw
+
+error UserNotFound {
+    id: Int
+}
+
+error ValidationError {
+    message: String
+}
+
+fn findUser(id: Int) -> String throws {
+    if id <= 0 {
+        throw ValidationError(message: "Invalid user ID")
+    }
+    
+    if id == 42 {
+        throw UserNotFound(id: id)
+    }
+    
+    "User_" + id.toString()
+}
+
+fn safeOperation() -> String throws {
+    print("Performing safe operation...")
+    "Success"
+}
+
+fn failingOperation() -> String throws {
+    throw ValidationError(message: "Operation failed")
+}
+
+fn main() {
+    // Test 1: Successful case
+    print("Test 1: Valid ID")
+    try {
+        let user = findUser(10)
+        print("Found: ")
+        print(user)
+    } catch error {
+        print("Error caught")
+    }
+    
+    // Test 2: User not found
+    print("Test 2: User not found")
+    try {
+        let user = findUser(42)
+        print("Found: ")
+        print(user)
+    } catch error {
+        print("Error: User not found")
+    }
+    
+    // Test 3: Validation error
+    print("Test 3: Invalid ID")
+    try {
+        let user = findUser(-1)
+        print("Found: ")
+        print(user)
+    } catch err {
+        print("Caught validation error")
+    }
+    
+    // Test 4: Safe operation (no exception)
+    print("Test 4: Safe operation")
+    try {
+        let result = safeOperation()
+        print("Result: ")
+        print(result)
+    } catch e {
+        print("Error in safe operation")
+    }
+    
+    // Test 5: Failing operation
+    print("Test 5: Failing operation")
+    try {
+        let result = failingOperation()
+        print("Result: ")
+        print(result)
+    } catch e {
+        print("Caught failure")
+    }
+}

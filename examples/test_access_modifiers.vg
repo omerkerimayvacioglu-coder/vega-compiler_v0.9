@@ -1,0 +1,82 @@
+// Test Access Modifiers - public, private, protected, internal
+
+struct BankAccount {
+    // Public field
+    public let accountNumber: String
+    
+    // Private field - should not be accessible outside
+    private let balance: Int
+    
+    // Internal (default) field
+    let accountType: String
+    
+    // Public method
+    public fn deposit(amount: Int) -> Int {
+        balance + amount
+    }
+    
+    // Private method
+    private fn validateAmount(amount: Int) -> Bool {
+        amount > 0
+    }
+    
+    // Internal method
+    fn getAccountType() -> String {
+        accountType
+    }
+}
+
+class DatabaseConnection {
+    // Public
+    public let host: String
+    
+    // Private
+    private let password: String
+    
+    // Protected
+    protected let connectionString: String
+    
+    // Internal
+    let timeout: Int
+    
+    fn connect() {
+        print("Connecting to: ")
+        print(host)
+    }
+    
+    private fn authenticate() {
+        print("Authenticating...")
+    }
+    
+    protected fn setConnectionString(str: String) {
+        // This is protected
+    }
+}
+
+fn main() {
+    // Test 1: Struct with access modifiers
+    print("Test 1: Bank Account")
+    let account = BankAccount(
+        accountNumber: "123456789",
+        balance: 1000,
+        accountType: "Checking"
+    )
+    print("Account: ")
+    print(account.accountNumber)
+    print("Type: ")
+    print(account.getAccountType())
+    
+    // Test 2: Class with access modifiers
+    print("Test 2: Database Connection")
+    let db = DatabaseConnection(
+        host: "localhost",
+        password: "secret",
+        connectionString: "db://localhost",
+        timeout: 30
+    )
+    print("Host: ")
+    print(db.host)
+    db.connect()
+    
+    print("Access modifiers working correctly!")
+}

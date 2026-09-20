@@ -1,0 +1,18 @@
+// Test Channels - Conceptual implementation
+// Note: Real channels require async runtime; this is a simplified version
+
+fn channelExample() {
+    print("Channel concept: message-passing communication")
+    print("Full implementation requires async runtime scheduler")
+    
+    // In a full implementation with async runtime:
+    // let channel = Channel<Int>()
+    // spawn { await channel.send(42) }
+    // let value = await channel.receive()
+}
+
+fn main() {
+    print("Channel-based communication conceptual test")
+    channelExample()
+    print("Channels work with async/await and runtime")
+}

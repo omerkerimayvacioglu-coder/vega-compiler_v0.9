@@ -1,0 +1,47 @@
+package com.vega.compiler.lexer;
+
+public enum TokenType {
+    // Literals
+    INT_LITERAL,
+    FLOAT_LITERAL,
+    STRING_LITERAL,
+    CHAR_LITERAL,
+    TRUE,
+    FALSE,
+    NULL,
+
+    // Identifiers
+    IDENT,
+
+    // Keywords
+    LET, VAR, FN, STRUCT, CLASS, ENUM, PROTOCOL, ACTOR, EXTENSION,
+    IF, ELSE, MATCH, FOR, WHILE, IN, RETURN, DEFER,
+    PUBLIC, PRIVATE, PROTECTED, INTERNAL,
+    IMPORT, PACKAGE, AS, MODULE,
+    INIT, OVERRIDE, OPERATOR,
+    ASYNC, AWAIT, SPAWN,
+    THROW, THROWS, TRY, CATCH,
+    ANNOTATION, ERROR,
+    PRINT, // built-in print function
+    WHERE, IMPLEMENTS, EXTENDS,
+
+    // Types
+    INT_TYPE, FLOAT_TYPE, BOOL_TYPE, STRING_TYPE, CHAR_TYPE, VOID_TYPE, ANY_TYPE,
+    RESULT, OK, ERR,
+
+    // Operators
+    PLUS, MINUS, STAR, SLASH, PERCENT,
+    EQ_EQ, BANG_EQ, LT, GT, LT_EQ, GT_EQ,
+    AND_AND, OR_OR, PIPE_GT,
+    BANG, QUESTION, QUESTION_QUESTION,
+    EQ, ARROW, FAT_ARROW,
+
+    // Delimiters
+    LPAREN, RPAREN, LBRACE, RBRACE, LBRACKET, RBRACKET,
+    COMMA, COLON, SEMICOLON, DOT, DOT_DOT, DOT_LT,
+
+    // Special
+    STRING_INTERP_START,
+    STRING_INTERP_END,
+    EOF,
+}

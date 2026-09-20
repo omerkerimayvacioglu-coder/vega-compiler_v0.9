@@ -1,0 +1,124 @@
+// Vega Standard Library - IO Module
+// Provides console I/O and file operations wrapping Java APIs
+
+package stdlib.io
+
+// ===== Console Output =====
+
+// Print a string followed by newline
+public fn println(msg: String) {
+    // This will be compiled to: System.out.println(msg)
+    // Java: System.out.println(msg);
+}
+
+// Print a string without newline
+public fn print(msg: String) {
+    // Java: System.out.print(msg);
+}
+
+// Print formatted string (like printf)
+
+
+// ===== Console Input =====
+
+// Read a line from standard input
+public fn readLine() -> String {
+    // Java: java.util.Scanner scanner = new Scanner(System.in);
+    //       return scanner.nextLine();
+}
+
+// Read an integer from standard input
+public fn readInt() -> Int {
+    // Java: java.util.Scanner scanner = new Scanner(System.in);
+    //       return scanner.nextInt();
+}
+
+// ===== File Operations =====
+
+struct File {
+  let  path: String
+}
+
+// Create or get a File reference
+public fn file(path: String) -> File {
+    File(path)
+}
+
+// Read entire file as string
+public fn read(f: File) -> String {
+    // Java: java.nio.file.Files.readString(java.nio.file.Paths.get(f.path))
+}
+
+// Read file as lines
+public fn readLines(f: File) -> Array<String> {
+    // Java: java.nio.file.Files.readAllLines(java.nio.file.Paths.get(f.path))
+}
+
+// Write string to file
+public fn write(f: File, content: String) {
+    // Java: java.nio.file.Files.writeString(java.nio.file.Paths.get(f.path), content)
+}
+
+// Append string to file
+public fn append(f: File, content: String) {
+    // Java: java.nio.file.Files.write(
+    //           java.nio.file.Paths.get(f.path), 
+    //           content.getBytes(),
+    //           java.nio.file.StandardOpenOption.APPEND,
+    //           java.nio.file.StandardOpenOption.CREATE
+    //       )
+}
+
+// Check if file exists
+public fn exists(f: File) -> Bool {
+    // Java: java.nio.file.Files.exists(java.nio.file.Paths.get(f.path))
+}
+
+// Delete file
+public fn delete(f: File) {
+    // Java: java.nio.file.Files.delete(java.nio.file.Paths.get(f.path))
+}
+
+// Get file size in bytes
+public fn size(f: File)-> Int {
+    // Java: java.nio.file.Files.size(java.nio.file.Paths.get(f.path))
+}
+
+// Check if path is a directory
+public fn isDir(f: File) -> Bool {
+    // Java: java.nio.file.Files.isDirectory(java.nio.file.Paths.get(f.path))
+}
+
+// ===== Directory Operations =====
+
+// Create directory (parent dirs not created)
+public fn mkdir(path: String) {
+    // Java: new java.io.File(path).mkdir()
+}
+
+// Create directory including parent dirs
+public fn mkdirs(path: String) {
+    // Java: new java.io.File(path).mkdirs()
+}
+
+// List files in directory
+public fn listFiles(path: String) -> Array<String> {
+    // Java: new java.io.File(path).list()
+}
+
+// ===== Path Operations =====
+
+// Get absolute path
+public fn absolutePath(path: String) -> String {
+    // Java: new java.io.File(path).getAbsolutePath()
+}
+
+// Get filename from path
+public fn fileName(path: String) -> String {
+    // Java: new java.io.File(path).getName()
+}
+
+// Get parent directory
+public fn parentDir(path: String) -> String {
+    // Java: new java.io.File(path).getParent()
+}

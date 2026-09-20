@@ -1,0 +1,37 @@
+let name = "Vega"
+let age = 13
+
+fn main() {
+    print("Hello, {name}! You are {age}.")
+    print("Next year: {age + 1}")
+
+    let score = 0
+    var count = 10
+    count = count + 5
+    print("Score: {count}")
+
+    if age >= 18 {
+        print("Adult")
+    } else {
+        print("Under 18")
+    }
+
+    let category = match age {
+        0..12 => "Child"
+        13..17 => "Teen"
+        _ => "Adult"
+    }
+
+    print("Category: {category}")
+
+    let numbers = [1, 2, 3, 4, 5]
+    for n in numbers {
+        print(n)
+    }
+
+    var i = 0
+    while i < 3 {
+        print("Loop: {i}")
+        i = i + 1
+    }
+}

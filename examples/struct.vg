@@ -1,0 +1,15 @@
+struct User {
+    let name: String
+    let age: Int
+
+    fn describe() -> String {
+        "{name} is {age} years old."
+    }
+}
+
+fn main() {
+    let user = User(name: "Ömer", age: 13)
+    print(user.name)
+    print(user.age)
+    print(user.describe())
+}

@@ -1,0 +1,45 @@
+// Test for Range Iteration
+fn testRange() {
+    print("Testing range iteration:")
+    for i in 0..5 {
+        print(i)
+    }
+    print("Testing exclusive range:")
+    for i in 0..5 {
+        print(i)
+    }
+}
+
+// Test for Null Coalescing
+fn testNullCoalescing() {
+    print("Testing null coalescing:")
+    let x: String? = null
+    let y = x ?? "default"
+    print(y)
+}
+
+// Test for Match with Wildcard
+fn testMatchWildcard(status: Int) -> String {
+    match status {
+        1 => "Active"
+        2 => "Inactive"
+        _ => "Unknown"
+    }
+}
+
+// Test for Array iteration (should still work)
+fn testArray() {
+    print("Testing array iteration:")
+    let numbers = [10, 20, 30]
+    for num in numbers {
+        print(num)
+    }
+}
+
+fn main() {
+    testRange()
+    testNullCoalescing()
+    testArray()
+    let msg = testMatchWildcard(1)
+    print(msg)
+}

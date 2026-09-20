@@ -1,0 +1,61 @@
+// Test Protocols - Declaration and Implementation
+
+protocol Printable {
+    fn printInfo() -> String
+}
+
+protocol Comparable {
+    fn compare(other: Comparable) -> Int
+}
+
+struct User implements Printable {
+    let name: String
+    let age: Int
+    
+    fn printInfo() -> String {
+        "User: {name}, Age: {age}"
+    }
+}
+
+struct Product implements Printable, Comparable {
+    let id: Int
+    let name: String
+    let price: Float
+    
+    fn printInfo() -> String {
+        "Product: {name} (${price})"
+    }
+    
+    fn compare(other: Comparable) -> Int {
+        0  // Simplified comparison
+    }
+}
+
+// Protocol with default implementation
+protocol Named {
+    fn getName() -> String
+    
+    fn displayName() {
+        print("Name: ")
+        print(getName())
+    }
+}
+
+struct Organization implements Named {
+    let organizationName: String
+    
+    fn getName() -> String {
+        organizationName
+    }
+}
+
+fn main() {
+    let user = User(name: "Alice", age: 30)
+    print(user.printInfo())
+    
+    let product = Product(id: 1, name: "Laptop", price: 999.99)
+    print(product.printInfo())
+    
+    let org = Organization(organizationName: "Tech Corp")
+    org.displayName()
+}

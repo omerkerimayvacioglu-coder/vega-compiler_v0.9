@@ -1,0 +1,39 @@
+// Test stdlib modules
+
+package main
+
+fn main() {
+    // Test IO module
+    println("=== Testing IO Module ===")
+    println("Hello from Vega stdlib!")
+    
+    // Test String module
+    let str = "Hello, Vega!"
+    println("String length: \(len(str))")
+    println("Uppercase: \(toUpper(str))")
+    println("Contains 'Vega': \(contains(str, "Vega"))")
+    
+    // Test Math module
+    println("\n=== Testing Math Module ===")
+    let pi = 3.14159
+    println("Pi: \(pi)")
+    println("sin(pi/2): \(sin(pi / 2.0))")
+    println("sqrt(16): \(sqrt(16.0))")
+    println("max(5, 10): \(max(5, 10))")
+    
+    // Test collections with Array
+    println("\n=== Testing Collections Module ===")
+    let numbers = arrayOf(1, 2, 3, 4, 5)
+    println("Array length: \(len(numbers))")
+    println("First element: \(get(numbers, 0))")
+    
+    // Test errors
+    println("\n=== Testing Errors Module ===")
+    let result = ok("Success!")
+    match result {
+        case Ok(val) => println("Result: \(val)")
+        case Err(e) => println("Error: \(message(e))")
+    }
+    
+    println("\nStdlib test complete!")
+}

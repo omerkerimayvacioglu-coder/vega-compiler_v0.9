@@ -1,0 +1,27 @@
+// Test Generic Constraints - where clause
+
+protocol Printable {
+    fn toString() -> String
+}
+
+protocol Comparable {
+    fn compare(other: Comparable) -> Int
+}
+
+// Generic struct with constraint
+struct Pair<T> where T: Printable {
+    let first: T
+    let second: T
+}
+
+// Generic function with constraint
+fn printBoth<T>(a: T, b: T) where T: Printable {
+    print(a.toString())
+    print(b.toString())
+}
+
+fn main() {
+    // Note: This is a basic test of parsing
+    // Full constraint validation would require more sophisticated type checking
+    print("Generic constraints parsing test")
+}

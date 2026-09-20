@@ -1,0 +1,114 @@
+// Vega Standard Library - Errors Module
+// Provides basic error handling types and utilities
+
+package stdlib.errors
+
+// ===== Error Type =====
+
+struct Error {
+    let message: String
+    let cause: Error?
+}
+
+// Create error with message
+public fn makeError(message: String) -> Error {
+    Error(message, nil)
+}
+
+// Create error with message and cause
+public fn errorWithCause(message: String, cause: Error) -> Error {
+    Error(message, cause)
+}
+
+// Get error message
+public fn message(e: Error) -> String {
+    e.message
+}
+
+// Get error cause
+public fn cause(e: Error) -> Error? {
+    e.cause
+}
+
+// ===== Common Error Types =====
+
+// Thrown when value is not found
+public fn notFoundError(message: String) -> Error {
+    makeError(message)
+}
+
+// Thrown when operation is invalid
+public fn invalidOperationError(message: String) -> Error {
+    makeError(message)
+}
+
+// Thrown for null reference
+public fn nullReferenceError(message: String) -> Error {
+    makeError(message)
+}
+
+// Thrown for argument errors
+public fn argumentError(paramName: String, message: String) -> Error {
+    makeError(message)
+}
+
+// Thrown for parse errors
+public fn parseError(input: String, expectedType: String) -> Error {
+    makeError(input)
+}
+
+// Thrown for IO errors
+public fn ioError(operation: String, path: String, details: String) -> Error {
+    makeError(details)
+}
+
+// Thrown for timeout
+public fn timeoutError(operation: String, timeoutMs: Int) -> Error {
+    makeError(operation)
+}
+
+// ===== Error Chaining =====
+
+// Wrap error with context
+public fn wrapError(e: Error, context: String) -> Error {
+    errorWithCause(context, e)
+}
+
+// Get full error message
+public fn getFullErrorMessage(e: Error) -> String {
+    e.message
+}
+
+// ===== Custom Error Types =====
+
+struct ValidationError {
+    let field: String
+    let message: String
+}
+
+public fn validationError(field: String, message: String) -> Error {
+    makeError(message)
+}
+
+struct PermissionError {
+    let operation: String
+    let resource: String
+}
+
+public fn permissionError(operation: String, resource: String) -> Error {
+    makeError(operation)
+}
+
+struct TimeoutErrorWithRetry {
+    let message: String
+    let retryable: Bool
+    let attemptCount: Int
+}
+
+public fn timeoutWithRetryError(
+    message: String,
+    retryable: Bool,
+    attempts: Int
+) -> Error {
+    makeError(message)
+}

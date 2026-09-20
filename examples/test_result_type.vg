@@ -1,0 +1,40 @@
+// Test Result Type - Ok/Err pattern
+
+error ParseError {
+    message: String
+}
+
+fn parseInt(str: String) -> Int throws {
+    // Simple parse: if contains 'a' throw error, else convert to 10
+    if str.length() == 0 {
+        throw ParseError(message: "Empty string")
+    }
+    10
+}
+
+fn parseUserAge(input: String) -> Int throws {
+    // Can throw ParseError
+    parseInt(input)
+}
+
+fn main() {
+    // Test 1: Result-based approach using try/catch
+    print("Test 1: Parse valid input")
+    try {
+        let age = parseUserAge("25")
+        print("Age: ")
+        print(age)
+    } catch err {
+        print("Parse error")
+    }
+    
+    // Test 2: Parse error
+    print("Test 2: Parse empty input")
+    try {
+        let age = parseUserAge("")
+        print("Age: ")
+        print(age)
+    } catch err {
+        print("Parse error - input was empty")
+    }
+}

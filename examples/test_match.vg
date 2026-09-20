@@ -1,0 +1,46 @@
+// Test Match Expression - Value Return
+
+enum Status {
+    Active
+    Inactive
+    Pending
+}
+
+fn getStatusMessage(status: Status) -> String {
+    match status {
+        Status.Active => "System is running"
+        Status.Inactive => "System is offline"
+        Status.Pending => "System is starting"
+    }
+}
+
+fn categorizeAge(age: Int) -> String {
+    match age {
+        0..12 => "Child"
+        13..17 => "Teen"
+        18..64 => "Adult"
+        _ => "Senior"
+    }
+}
+
+fn main() {
+    // Test enum match
+    let msg1 = getStatusMessage(Status.Active)
+    print(msg1)
+    
+    let msg2 = getStatusMessage(Status.Inactive)
+    print(msg2)
+    
+    // Test range match
+    let category1 = categorizeAge(5)
+    print(category1)
+    
+    let category2 = categorizeAge(15)
+    print(category2)
+    
+    let category3 = categorizeAge(30)
+    print(category3)
+    
+    let category4 = categorizeAge(75)
+    print(category4)
+}

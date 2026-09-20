@@ -1,0 +1,35 @@
+// Test Tasks and Spawn - Simple synchronous implementation
+
+fn compute(x: Int) -> Int {
+    x * x
+}
+
+async fn asyncCompute(x: Int) -> Int {
+    print("Computing: ")
+    print(x)
+    x * x
+}
+
+fn main() {
+    // Test 1: Direct function calls
+    print("Test 1: Direct calls")
+    let result1 = compute(5)
+    print("Result: ")
+    print(result1)
+    
+    // Test 2: Async function calls (simplified - no real concurrency)
+    print("Test 2: Async calls")
+    let result2 = asyncCompute(10)
+    print("Async result: ")
+    print(result2)
+    
+    // Test 3: Multiple async operations
+    print("Test 3: Multiple async")
+    let a = asyncCompute(3)
+    let b = asyncCompute(4)
+    let c = asyncCompute(5)
+    print("Results: ")
+    print(a)
+    print(b)
+    print(c)
+}

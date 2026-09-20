@@ -1,0 +1,387 @@
+// Vega Standard Library - Math Module
+// Provides mathematical operations wrapping Java Math APIs
+
+package stdlib.math
+
+// ===== Constants =====
+
+// Pi constant
+public let PI: Float = 3.141592653589793
+
+// Euler's number
+public let E: Float = 2.718281828459045
+
+// ===== Basic Operations =====
+
+// Absolute value
+public fn abs(x: Int) -> Int {
+    // Java: Math.abs(x)
+}
+
+public fn abs(x: Float) -> Float {
+    // Java: Math.abs(x)
+}
+
+public fn abs(x: Double) -> Double {
+    // Java: Math.abs(x)
+}
+
+// Maximum of two numbers
+public fn max(a: Int, b: Int) -> Int {
+    // Java: Math.max(a, b)
+}
+
+public fn max(a: Float, b: Float) -> Float {
+    // Java: Math.max(a, b)
+}
+
+public fn max(a: Double, b: Double) -> Double {
+    // Java: Math.max(a, b)
+}
+
+// Minimum of two numbers
+public fn min(a: Int, b: Int) -> Int {
+    // Java: Math.min(a, b)
+}
+
+public fn min(a: Float, b: Float) -> Float {
+    // Java: Math.min(a, b)
+}
+
+public fn min(a: Double, b: Double) -> Double {
+    // Java: Math.min(a, b)
+}
+
+// Sign of number (-1, 0, or 1)
+public fn sign(x: Int) -> Int {
+    // Java: Integer.signum(x)
+}
+
+public fn sign(x: Float) -> Float {
+    // Java: Math.signum(x)
+}
+
+public fn sign(x: Double) -> Double {
+    // Java: Math.signum(x)
+}
+
+// ===== Power and Root =====
+
+// Power: x^y
+public fn pow(x: Float, y: Float) -> Float {
+    // Java: Math.pow(x, y)
+}
+
+public fn pow(x: Double, y: Double) -> Double {
+    // Java: Math.pow(x, y)
+}
+
+// Square root
+public fn sqrt(x: Float) -> Float {
+    // Java: (float) Math.sqrt(x)
+}
+
+public fn sqrt(x: Double) -> Double {
+    // Java: Math.sqrt(x)
+}
+
+// Cube root
+public fn cbrt(x: Float) -> Float {
+    // Java: (float) Math.cbrt(x)
+}
+
+public fn cbrt(x: Double) -> Double {
+    // Java: Math.cbrt(x)
+}
+
+// ===== Exponential and Logarithm =====
+
+// e^x
+public fn exp(x: Float) -> Float {
+    // Java: (float) Math.exp(x)
+}
+
+public fn exp(x: Double) -> Double {
+    // Java: Math.exp(x)
+}
+
+// Natural logarithm (base e)
+public fn ln(x: Float) -> Float {
+    // Java: (float) Math.log(x)
+}
+
+public fn ln(x: Double) -> Double {
+    // Java: Math.log(x)
+}
+
+// Logarithm base 10
+public fn log10(x: Float) -> Float {
+    // Java: (float) Math.log10(x)
+}
+
+public fn log10(x: Double) -> Double {
+    // Java: Math.log10(x)
+}
+
+// Logarithm with custom base
+public fn log(x: Float, base: Float) -> Float {
+    // Java: (float) (Math.log(x) / Math.log(base))
+}
+
+public fn log(x: Double, base: Double) -> Double {
+    // Java: Math.log(x) / Math.log(base)
+}
+
+// ===== Trigonometric Functions =====
+
+// Sine (radians)
+public fn sin(x: Float) -> Float {
+    // Java: (float) Math.sin(x)
+}
+
+public fn sin(x: Double) -> Double {
+    // Java: Math.sin(x)
+}
+
+// Cosine (radians)
+public fn cos(x: Float) -> Float {
+    // Java: (float) Math.cos(x)
+}
+
+public fn cos(x: Double) -> Double {
+    // Java: Math.cos(x)
+}
+
+// Tangent (radians)
+public fn tan(x: Float) -> Float {
+    // Java: (float) Math.tan(x)
+}
+
+public fn tan(x: Double) -> Double {
+    // Java: Math.tan(x)
+}
+
+// Arc sine
+public fn asin(x: Float) -> Float {
+    // Java: (float) Math.asin(x)
+}
+
+public fn asin(x: Double) -> Double {
+    // Java: Math.asin(x)
+}
+
+// Arc cosine
+public fn acos(x: Float) -> Float {
+    // Java: (float) Math.acos(x)
+}
+
+public fn acos(x: Double) -> Double {
+    // Java: Math.acos(x)
+}
+
+// Arc tangent
+public fn atan(x: Float) -> Float {
+    // Java: (float) Math.atan(x)
+}
+
+public fn atan(x: Double) -> Double {
+    // Java: Math.atan(x)
+}
+
+// Arc tangent of y/x
+public fn atan2(y: Float, x: Float) -> Float {
+    // Java: (float) Math.atan2(y, x)
+}
+
+public fn atan2(y: Double, x: Double) -> Double {
+    // Java: Math.atan2(y, x)
+}
+
+// ===== Hyperbolic Functions =====
+
+// Hyperbolic sine
+public fn sinh(x: Float) -> Float {
+    // Java: (float) Math.sinh(x)
+}
+
+public fn sinh(x: Double) -> Double {
+    // Java: Math.sinh(x)
+}
+
+// Hyperbolic cosine
+public fn cosh(x: Float) -> Float {
+    // Java: (float) Math.cosh(x)
+}
+
+public fn cosh(x: Double) -> Double {
+    // Java: Math.cosh(x)
+}
+
+// Hyperbolic tangent
+public fn tanh(x: Float) -> Float {
+    // Java: (float) Math.tanh(x)
+}
+
+public fn tanh(x: Double) -> Double {
+    // Java: Math.tanh(x)
+}
+
+// ===== Degree/Radian Conversion =====
+
+// Convert degrees to radians
+public fn toRadians(degrees: Float) -> Float {
+    // Java: (float) Math.toRadians(degrees)
+}
+
+public fn toRadians(degrees: Double) -> Double {
+    // Java: Math.toRadians(degrees)
+}
+
+// Convert radians to degrees
+public fn toDegrees(radians: Float) -> Float {
+    // Java: (float) Math.toDegrees(radians)
+}
+
+public fn toDegrees(radians: Double) -> Double {
+    // Java: Math.toDegrees(radians)
+}
+
+// ===== Rounding =====
+
+// Round to nearest integer
+public fn round(x: Float) -> Int {
+    // Java: Math.round(x)
+}
+
+public fn round(x: Double) -> Long {
+    // Java: Math.round(x)
+}
+
+// Floor: largest integer <= x
+public fn floor(x: Float) -> Float {
+    // Java: (float) Math.floor(x)
+}
+
+public fn floor(x: Double) -> Double {
+    // Java: Math.floor(x)
+}
+
+// Ceiling: smallest integer >= x
+public fn ceil(x: Float) -> Float {
+    // Java: (float) Math.ceil(x)
+}
+
+public fn ceil(x: Double) -> Double {
+    // Java: Math.ceil(x)
+}
+
+// Truncate decimal part
+public fn trunc(x: Float) -> Float {
+    // Java: (float) Math.signum(x) * Math.floor(Math.abs(x))
+}
+
+public fn trunc(x: Double) -> Double {
+    // Java: Math.signum(x) * Math.floor(Math.abs(x))
+}
+
+// ===== Random Numbers =====
+
+// Random float between 0.0 (inclusive) and 1.0 (exclusive)
+public fn random() -> Float {
+    // Java: (float) Math.random()
+}
+
+// Random integer between 0 (inclusive) and max (exclusive)
+public fn randomInt(max: Int) -> Int {
+    // Java: new java.util.Random().nextInt(max)
+}
+
+// Random integer between min (inclusive) and max (exclusive)
+public fn randomInt(min: Int, max: Int) -> Int {
+    // Java: min + new java.util.Random().nextInt(max - min)
+}
+
+// Random float between min (inclusive) and max (exclusive)
+public fn randomFloat(min: Float, max: Float) -> Float {
+    // Java: min + (float) Math.random() * (max - min)
+}
+
+// ===== Statistics =====
+
+// Sum of array elements
+public fn sum(numbers: Array<Int>) -> Int {
+    // Java: return Arrays.stream(numbers).sum()
+}
+
+public fn sum(numbers: Array<Float>) -> Float {
+    // Java: return (float) Arrays.stream(numbers).sum()
+}
+
+public fn sum(numbers: Array<Double>) -> Double {
+    // Java: return Arrays.stream(numbers).sum()
+}
+
+// Average of array elements
+public fn average(numbers: Array<Int>) -> Float {
+    // Java: return (float) Arrays.stream(numbers).average().orElse(0)
+}
+
+public fn average(numbers: Array<Float>) -> Float {
+    // Java: return (float) Arrays.stream(numbers).average().orElse(0)
+}
+
+public fn average(numbers: Array<Double>) -> Double {
+    // Java: return Arrays.stream(numbers).average().orElse(0)
+}
+
+// Minimum value in array
+public fn min(numbers: Array<Int>) -> Int {
+    // Java: Arrays.stream(numbers).min().orElse(0)
+}
+
+public fn min(numbers: Array<Float>) -> Float {
+    // Java: return (float) Arrays.stream(numbers).min().orElse(0)
+}
+
+// Maximum value in array
+public fn max(numbers: Array<Int>) -> Int {
+    // Java: Arrays.stream(numbers).max().orElse(0)
+}
+
+public fn max(numbers: Array<Float>) -> Float {
+    // Java: return (float) Arrays.stream(numbers).max().orElse(0)
+}
+
+// ===== Complex Numbers (helper) =====
+
+struct Complex {
+    let real: Float
+    let imag: Float
+}
+
+// Create complex number
+public fn complex(real: Float, imag: Float) -> Complex {
+    Complex(real, imag)
+}
+
+// Add two complex numbers
+public fn add(c1: Complex, c2: Complex) -> Complex {
+    Complex(c1.real + c2.real, c1.imag + c2.imag)
+}
+
+// Subtract two complex numbers
+public fn subtract(c1: Complex, c2: Complex) -> Complex {
+    Complex(c1.real - c2.real, c1.imag - c2.imag)
+}
+
+// Multiply two complex numbers
+public fn multiply(c1: Complex, c2: Complex) -> Complex {
+    let real = c1.real * c2.real - c1.imag * c2.imag
+    let imag = c1.real * c2.imag + c1.imag * c2.real
+    Complex(real, imag)
+}
+
+// Magnitude of complex number
+public fn magnitude(c: Complex) -> Float {
+    sqrt(c.real * c.real + c.imag * c.imag)
+}

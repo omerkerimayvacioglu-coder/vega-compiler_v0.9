@@ -1,0 +1,71 @@
+// Test Defer Statement - Cleanup execution
+
+fn openFile(filename: String) -> String {
+    print("Opening file: ")
+    print(filename)
+    filename
+}
+
+fn closeFile(filename: String) {
+    print("Closing file: ")
+    print(filename)
+}
+
+fn readFileContent() -> String {
+    let file = openFile("data.txt")
+    
+    defer {
+        closeFile(file)
+    }
+    
+    print("Reading content...")
+    "file content"
+}
+
+fn processWithDefer() {
+    print("Start processing")
+    
+    defer {
+        print("Cleanup 1")
+    }
+    
+    defer {
+        print("Cleanup 2")
+    }
+    
+    print("Doing work")
+}
+
+fn earlyReturn(value: Int) -> String {
+    print("Start function")
+    
+    defer {
+        print("Defer executed before return")
+    }
+    
+    if value > 0 {
+        return "positive"
+    }
+    
+    print("Negative value")
+    "negative"
+}
+
+fn main() {
+    // Test 1: Simple defer
+    print("Test 1: Simple defer")
+    readFileContent()
+    
+    print("\nTest 2: Multiple defers (LIFO order)")
+    processWithDefer()
+    
+    print("\nTest 3: Defer with early return")
+    let result = earlyReturn(5)
+    print("Result: ")
+    print(result)
+    
+    print("\nTest 4: Defer with negative value")
+    let result2 = earlyReturn(-1)
+    print("Result: ")
+    print(result2)
+}

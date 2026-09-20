@@ -1,0 +1,77 @@
+// Test Operator Overloading
+
+struct Vector {
+    let x: Int
+    let y: Int
+    
+    operator +(other: Vector) -> Vector {
+        Vector(x: x + other.x, y: y + other.y)
+    }
+    
+    operator -(other: Vector) -> Vector {
+        Vector(x: x - other.x, y: y - other.y)
+    }
+    
+    operator *(scalar: Int) -> Vector {
+        Vector(x: x * scalar, y: y * scalar)
+    }
+    
+    fn toString() -> String {
+        "Vector(" + x.toString() + ", " + y.toString() + ")"
+    }
+}
+
+struct Point {
+    let a: Int
+    let b: Int
+    
+    operator ==(other: Point) -> Bool {
+        a == other.a && b == other.b
+    }
+    
+    fn toString() -> String {
+        "Point(" + a.toString() + ", " + b.toString() + ")"
+    }
+}
+
+fn main() {
+    // Test 1: Vector addition
+    print("Test 1: Vector Addition")
+    let v1 = Vector(x: 1, y: 2)
+    let v2 = Vector(x: 3, y: 4)
+    let v3 = v1 + v2
+    print("v1: ")
+    print(v1.toString())
+    print("v2: ")
+    print(v2.toString())
+    print("v1 + v2: ")
+    print(v3.toString())
+    
+    // Test 2: Vector subtraction
+    print("Test 2: Vector Subtraction")
+    let v4 = v3 - v1
+    print("(v1 + v2) - v1: ")
+    print(v4.toString())
+    
+    // Test 3: Vector scalar multiplication
+    print("Test 3: Vector Multiplication")
+    let v5 = v1 * 3
+    print("v1 * 3: ")
+    print(v5.toString())
+    
+    // Test 4: Point equality
+    print("Test 4: Point Equality")
+    let p1 = Point(a: 5, b: 10)
+    let p2 = Point(a: 5, b: 10)
+    let p3 = Point(a: 3, b: 7)
+    
+    if p1 == p2 {
+        print("p1 equals p2: true")
+    }
+    
+    if p1 == p3 {
+        print("p1 equals p3: true")
+    } else {
+        print("p1 equals p3: false")
+    }
+}

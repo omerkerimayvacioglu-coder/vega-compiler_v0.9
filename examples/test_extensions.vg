@@ -1,0 +1,46 @@
+// Test Extensions - Add methods to existing types
+
+extension String {
+    fn isBlank() -> Bool {
+        // Check if string is empty or whitespace
+        // For now, simplified implementation
+        false
+    }
+    
+    fn length() -> Int {
+        // Get string length
+        0  // Placeholder
+    }
+}
+
+extension Int {
+    fn isEven() -> Bool {
+        // Check if number is even
+        false  // Placeholder
+    }
+    
+    fn squared() -> Int {
+        0  // Placeholder
+    }
+}
+
+fn main() {
+    let text = "Hello, Vega"
+    
+    // Call extension methods
+    if text.isBlank() {
+        print("Text is blank")
+    } else {
+        print("Text is not blank: ")
+        print(text)
+    }
+    
+    let len = text.length()
+    print("Length: ")
+    print(len)
+    
+    let num = 5
+    let sq = num.squared()
+    print("5 squared: ")
+    print(sq)
+}

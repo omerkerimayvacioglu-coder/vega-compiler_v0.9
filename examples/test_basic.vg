@@ -1,0 +1,22 @@
+fn add(a: Int, b: Int) -> Int {
+    a + b
+}
+
+fn main() {
+    let x = 10
+    var y = 20
+
+    print("x = {x}")
+    print("y = {y}")
+    print("sum = {add(x, y)}")
+
+    if x < y {
+        print("x küçüktür")
+    } else {
+        print("x büyüktür")
+    }
+
+    for i in [1, 2, 3, 4, 5] {
+        print("i = {i}")
+    }
+}
